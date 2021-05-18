@@ -71,7 +71,7 @@ class Converter:
         for m in re.finditer(pattern, twitter_list_url, re.I):
             try:
                 for member in Cursor(
-                    self.client.list_members, m.group("list_id")
+                    self.client.list_members, list_id=m.group("list_id")
                 ).items():
                     twitter_id = member._json["id_str"]
                     if twitter_id not in twitter_ids:
